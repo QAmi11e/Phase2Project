@@ -5,6 +5,8 @@ const { LoginPage } = require("../pages/login"); //this was apparently the only 
 exports.HomePage = class HomePage {
   constructor(page) {
     this.page = page;
+    // Did not use get by for below bc only .locator has other fx like .first() that can be run on em.
+    // I wonder if this is a good use of a "page" js file lol
     this.itemName = page.locator('[data-test="inventory-item-name"]').first();
     this.itemDescription = page
       .locator('[data-test="inventory-item-desc"]')
@@ -16,11 +18,30 @@ exports.HomePage = class HomePage {
     this.addToCartButton = page
       .locator('[data-test="add-to-cart-sauce-labs-backpack"]')
       .first();
+    this.burgerMenu = page.getByRole("button", { name: "Open Menu" });
+    this.logoutLink = page.getByText("Logout");
   }
 
   async goToURLAndLogin(page) {
     const Login = new LoginPage(page);
     await Login.goToLoginPage();
-    await Login.loginSucc();
+    await Login.validLogin();
   }
+
+  async logout(page) {
+    await this.burgerMenu.click();
+    await this.logoutLink.click();
+  }
+
+  async goToItemURL(page){
+    await this.page.goto("https://www.saucedemo.com/inventory.html");
+  }
+
+  /** Axed this guy bc toBeVisible can only be used with Locators and the value passed is NOT a Locator u_u
+  async locateLoginButton(page){
+    const Login = new LoginPage(page);
+    const loginButton = Login.loginButton;
+    return loginButton;
+  }
+    */
 }; //end of the class

@@ -13,11 +13,10 @@ test("Incomplete/Invalid Login", async ({ page }) => {
 }); 
 
 //Concepts: Get by test-Id, importing Selectors
-test.only("Valid Login", async ({ page }) => {
+test("Valid Login", async ({ page }) => {
   const Login = new LoginPage(page);
   await Login.goToLoginPage();
   await Login.login("standard_user", "secret_sauce");
   await selectors.setTestIdAttribute("data-test");
   await expect(page.getByTestId("shopping-cart-link")).toBeVisible();
-  expect(page.getByTestId("heh")).toBe
 });

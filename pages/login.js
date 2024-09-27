@@ -20,9 +20,10 @@ exports.LoginPage = class LoginPage {
   }
 
   //For use with other pages...
-  async loginSucc(){ 
+  async validLogin(){ 
     await this.usernameTextbox.fill("standard_user");
     await this.passwordTextbox.fill("secret_sauce");
     await this.loginButton.click();
   }
+
 }; //end of the class
