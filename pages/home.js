@@ -1,12 +1,13 @@
 /**exists bc it's easier to adjust for changes made to the site over in this file than it would be in the Tests.*/
 
-const { LoginPage } = require("../pages/login"); //this was apparently the only way to import this without destroying stability of exports.HomePage. import ( x ) from "x" doesn't work here )-:
+const { LoginTools } = require("./LoginTools"); //this was apparently the only way to import this without destroying stability of exports.HomePage. import ( x ) from "x" doesn't work here )-:
 
 exports.HomePage = class HomePage {
   constructor(page) {
     this.page = page;
+    this.LoginTools = new LoginTools(page);
     // Did not use get by for below bc only .locator has other fx like .first() that can be run on em.
-    // I wonder if this is a good use of a "page" js file lol
+    // this is a giant constructor... hrm
     this.itemName = page.locator('[data-test="inventory-item-name"]').first();
     this.itemDescription = page
       .locator('[data-test="inventory-item-desc"]')
@@ -22,10 +23,16 @@ exports.HomePage = class HomePage {
     this.logoutLink = page.getByText("Logout");
   }
 
+  async passOverTools() {
+    //passes tools from LoginTools to test file
+    return this.LoginTools;
+  }
+
+  /** Home Page Functions  */
+
   async goToURLAndLogin(page) {
-    const Login = new LoginPage(page);
-    await Login.goToLoginPage();
-    await Login.validLogin();
+    await this.LoginTools.goToLoginPage();
+    await this.LoginTools.validLogin();
   }
 
   async logout(page) {
@@ -33,7 +40,7 @@ exports.HomePage = class HomePage {
     await this.logoutLink.click();
   }
 
-  async goToItemURL(page){
+  async goToItemURL(page) {
     await this.page.goto("https://www.saucedemo.com/inventory.html");
   }
 

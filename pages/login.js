@@ -1,29 +1,23 @@
 /**exists bc it's easier to adjust for changes made to the site over in this file than it would be in the Tests.*/
 
+const { LoginTools } = require("./LoginTools");
+
 exports.LoginPage = class LoginPage {
   constructor(page) {
-    this.page = page;
-    this.usernameTextbox = page.getByPlaceholder("Username");
-    this.passwordTextbox = page.getByPlaceholder("Password");
-    this.loginButton = page.getByRole("button", { id: "login-button" });
+    this.LoginTools = new LoginTools(page);
   }
 
-  async goToLoginPage() {
-    await this.page.goto("https://www.saucedemo.com/");
+  async passOverTools() {
+    //passes tools from LoginTools
+    return this.LoginTools;
   }
 
+  /*** Login Page Functions */
+  //this is left blank for a reason bc we want to control the values in the tests
   async login(username, password) {
     //Will populate the arguments with parameters passed in when login is conjured in test
-    await this.usernameTextbox.fill(username);
-    await this.passwordTextbox.fill(password);
-    await this.loginButton.click();
+    await ((this.LoginTools).usernameTextbox).fill(username);
+    await ((this.LoginTools).passwordTextbox).fill(password);
+    await((this.LoginTools).loginButton).click();
   }
-
-  //For use with other pages...
-  async validLogin(){ 
-    await this.usernameTextbox.fill("standard_user");
-    await this.passwordTextbox.fill("secret_sauce");
-    await this.loginButton.click();
-  }
-
 }; //end of the class
