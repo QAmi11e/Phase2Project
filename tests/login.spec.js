@@ -1,5 +1,5 @@
 import { test, expect, selectors } from "@playwright/test";
-import { LoginPage } from "../pages/Login";
+import { LoginPage } from "../pages/LoginPage";
 
 test.beforeEach("Get Login tools and navigate to URL", async ({ page }) => {
   const loginPage = new LoginPage(page);

@@ -3,7 +3,7 @@
 const { LoginTools } = require("./LoginTools"); //this was apparently the only way to import this without destroying stability of exports.HomePage. import ( x ) from "x" doesn't work here )-:
 
 exports.HomePage = class HomePage {
-  constructor(page) {
+  constructor(page) { //need to pass in page so lil guy knows on what (the browser page) it needs to be locating stuff on. generally only need to pass page to functions or classes that have locators
     this.page = page;
     this.LoginTools = new LoginTools(page);
     // Did not use get by for below bc only .locator has other fx like .first() that can be run on em.
@@ -30,17 +30,16 @@ exports.HomePage = class HomePage {
 
   /** Home Page Functions  */
 
-  async goToURLAndLogin(page) {
-    await this.LoginTools.goToLoginPage();
-    await this.LoginTools.validLogin();
+  async goToURLandValidLogin() {
+    await this.LoginTools.goToURLandValidLogin();
   }
 
-  async logout(page) {
+  async logout() {
     await this.burgerMenu.click();
     await this.logoutLink.click();
   }
 
-  async goToItemURL(page) {
+  async goToItemURL() {
     await this.page.goto("https://www.saucedemo.com/inventory.html");
   }
 

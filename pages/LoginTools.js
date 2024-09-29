@@ -14,7 +14,8 @@ exports.LoginTools = class LoginTools {
     await this.page.goto("https://www.saucedemo.com/");
   }
 
-  async validLogin() {
+  async goToURLandValidLogin() {
+    await this.goToLoginPage();
     await this.usernameTextbox.fill("standard_user");
     await this.passwordTextbox.fill("secret_sauce");
     await this.loginButton.click();
