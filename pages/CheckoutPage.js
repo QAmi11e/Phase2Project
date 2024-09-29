@@ -16,6 +16,7 @@ exports.CheckoutPage = class CheckoutPage {
     this.zip = page.getByPlaceholder("Zip/Postal Code");
     this.finishButton = page.getByRole("button", { name: "Finish" });
     this.backHomeButton = page.getByRole("button", { name: "Back Home" });
+    this.itemName = page.locator('[data-test="inventory-item-name"]').first();
   }
 
   async goToURLandValidLogin() {
@@ -31,7 +32,7 @@ exports.CheckoutPage = class CheckoutPage {
     this.cartBadgeNumber = await (this.page.locator("span[data-test='shopping-cart-badge']")).textContent();
   }
 
-  async fillBuyerInformation(firstName, lastName, zip){
+  async fillBuyerInformation(firstName, lastName, zip) {
     await (this.firstName).fill(firstName);
     await (this.lastName).fill(lastName);
     await (this.zip).fill(zip);

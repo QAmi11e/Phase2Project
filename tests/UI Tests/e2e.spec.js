@@ -29,14 +29,13 @@ test("E2E - Valid Login to Checking Out", async ({ page }) => {
     await test.step("Check Cart and Continue", async () => {
         await checkout.cartLink.click();
         await checkout.checkoutButton.click();
-        /** CHECK CART ITEM FX AND EXPECT HERE */
         await checkout.fillBuyerInformation("Big", "Chongus", "12345");
         await checkout.continueButton.click();
         await expect(page.getByText("Checkout: Overview")).toBeVisible();
+        await expect(await checkout.itemName.textContent()).toEqual(await home.itemName.textContent()); //the await within awaits kill me
     });
 
-    await test.step("Check Overview and Finish", async() =>{
-        /** CHECK ITEM IN OVERVIEW AND EXPECT */
+    await test.step("Checkout  Overview and Finish", async () => {
         await checkout.finishButton.click();
         await expect(page.getByText("Thank you for your order!")).toBeVisible;
         await checkout.backHomeButton.click();
