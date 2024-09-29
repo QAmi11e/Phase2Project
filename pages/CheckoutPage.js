@@ -17,6 +17,7 @@ exports.CheckoutPage = class CheckoutPage {
     this.finishButton = page.getByRole("button", { name: "Finish" });
     this.backHomeButton = page.getByRole("button", { name: "Back Home" });
     this.itemName = page.locator('[data-test="inventory-item-name"]').first();
+    this.overviewItemName = page.locator('[data-test="inventory-item-name"]').first();
   }
 
   async goToURLandValidLogin() {
