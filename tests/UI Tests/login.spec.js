@@ -12,7 +12,7 @@ test("Incomplete/Invalid Login", async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.login("oopsy", "");
   //await expect(page.getByText("Epic sadface: Password is required", {exact: true})).toBeVisible(); //*****here's the exact match of text, case sensitive
-  await expect(page.getByText("PaSsWord is RequIreD")).toBeVisible(); //*** bc not exact, can have Spongebob meme */
+  await expect(page.getByText("PaSsWord is REQuIreD")).toBeVisible(); //*** bc not exact, can have Spongebob meme */
 }); 
 
 //Concepts: Get by test-Id, importing Selectors

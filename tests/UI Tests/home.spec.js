@@ -1,5 +1,5 @@
 import { test, expect} from "@playwright/test";
-import { HomePage } from "../../pages/HomePage"; // won't let me use /Home. w/e
+import { HomePage } from "../../pages/HomePage"; 
 
 
 test("At Least One Item on Home", async ({ page }) => {
