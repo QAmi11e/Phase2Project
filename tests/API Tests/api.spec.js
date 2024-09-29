@@ -26,7 +26,7 @@ test("POST New Comment", async ({ request }) => {
     console.log(await response.json());
 });
 
-test.only("Alphabetize Posts", async ({ request }) => {
+test("Alphabetize Posts", async ({ request }) => {
     const response = await request.get(`${baseURL}/posts`, {
         ignoreHTTPSErrors: true,
     });
