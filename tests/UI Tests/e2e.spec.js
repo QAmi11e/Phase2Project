@@ -21,7 +21,7 @@ test("E2E - Valid Login to Checking Out", async ({ page }) => {
   await test.step("Add New Item to Cart", async () => {
     await checkout.goToURLandValidLogin();
     await checkout.addItemToCart(page);
-    await expect(checkout.cartBadge).toBeVisible(); //redundant, no? or better to check it exists then its validity?
+    await expect(checkout.cartBadge).toBeVisible();
     await checkout.getBadgeNumber();
     await expect(checkout.cartBadgeNumber).toBe("1");
   });
@@ -34,7 +34,7 @@ test("E2E - Valid Login to Checking Out", async ({ page }) => {
     await expect(page.getByText("Checkout: Overview")).toBeVisible();
     await expect(await checkout.itemName.textContent()).toEqual(
       await home.itemName.textContent()
-    ); //the await within awaits kill me
+    );
     await expect(await checkout.itemName.textContent()).toEqual(
       await checkout.overviewItemName.textContent()
     );

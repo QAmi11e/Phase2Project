@@ -1,5 +1,4 @@
 /** Exists because other pages need to login and I was chaining dependencies. ie from Login->Home->Checkout
- * 
  */
 
 exports.LoginTools = class LoginTools {

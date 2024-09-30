@@ -3,7 +3,7 @@ import { HomePage } from "../../pages/HomePage";
 
 /** Positive Test */
 test("At Least One Item on Home", async ({ page }) => {
-  const home = new HomePage(page); //is there any way I can put this in a testEach?
+  const home = new HomePage(page); 
   await home.goToURLandValidLogin();
   await expect(home.itemName).toBeVisible();
   await expect(home.itemDescription).toBeVisible();

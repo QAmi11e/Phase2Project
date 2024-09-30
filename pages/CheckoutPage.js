@@ -24,6 +24,7 @@ exports.CheckoutPage = class CheckoutPage {
     await this.LoginTools.goToURLandValidLogin();
   }
 
+  /** Checkout Page Functions */
   async addItemToCart(page) {
     const home = new HomePage(page);
     await home.addToCartButton.click();
@@ -38,5 +39,4 @@ exports.CheckoutPage = class CheckoutPage {
     await (this.lastName).fill(lastName);
     await (this.zip).fill(zip);
   }
-
 };
