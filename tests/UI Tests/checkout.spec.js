@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { CheckoutPage } from "../../pages/CheckoutPage";
 import { HomePage } from "../../pages/HomePage"; 
 
-/** Negative Test */
+/** Additional Test 1 */
 test("Empty Cart Checkout", async ({ page }) => {
   const checkout = new CheckoutPage(page);
   await checkout.goToURLandValidLogin();
@@ -12,7 +12,7 @@ test("Empty Cart Checkout", async ({ page }) => {
   await expect(page.getByText("Error")).toBeVisible();
 });
 
-/** Additional Test */
+/** Additional Test 2 */
 test("Badge on Cart", async ({ page }) => {
   const checkout = new CheckoutPage(page);
   await checkout.goToURLandValidLogin();

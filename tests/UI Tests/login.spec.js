@@ -7,6 +7,7 @@ test.beforeEach("Get Login tools and navigate to URL", async ({ page }) => {
   await (await loginToolkit).goToLoginPage();
 });
 
+/** Negative Test Validation */
 //Concepts: GET BY PLACEHOLDER, GET BY TEXT, {exact: T/F}
 test("Incomplete/Invalid Login", async ({ page }) => {
   const loginPage = new LoginPage(page);
@@ -15,6 +16,7 @@ test("Incomplete/Invalid Login", async ({ page }) => {
   await expect(page.getByText("PaSsWord is REQuIreD")).toBeVisible(); //*** bc not exact, can have Spongebob meme */
 }); 
 
+/** Login Verification */
 //Concepts: Get by test-Id, importing Selectors
 test("Valid Login", async ({ page }) => {
   const loginPage = new LoginPage(page);

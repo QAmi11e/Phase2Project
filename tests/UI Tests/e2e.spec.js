@@ -3,6 +3,7 @@ import { LoginPage } from "../../pages/LoginPage";
 import { HomePage } from "../../pages/HomePage";
 import { CheckoutPage } from "../../pages/CheckoutPage";
 
+/** E2E Workflow */
 test("E2E - Valid Login to Checking Out", async ({ page }) => {
   const loginPage = new LoginPage(page);
   const checkout = new CheckoutPage(page);

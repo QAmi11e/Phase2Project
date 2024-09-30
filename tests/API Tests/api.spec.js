@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const baseURL = "https://jsonplaceholder.typicode.com";
 
+/** GET Request */
 test("GET User 1's Post", async ({ request }) => {
     const response = await request.get(`${baseURL}/posts/1`);
     expect(response.status()).toBe(200);
@@ -11,6 +12,7 @@ test("GET User 1's Post", async ({ request }) => {
     expect(textResponse).toContain('1');
 });
 
+/** POST Request */
 test("POST New Comment", async ({ request }) => {
     const response = await request.post(`${baseURL}/posts`, {
         data: {
@@ -26,6 +28,7 @@ test("POST New Comment", async ({ request }) => {
     console.log(await response.json());
 });
 
+/** API Results in a Workflow + Artifact */
 test("Alphabetize Posts", async ({ request }) => {
     const response = await request.get(`${baseURL}/posts`, {
         ignoreHTTPSErrors: true,
@@ -38,7 +41,7 @@ test("Alphabetize Posts", async ({ request }) => {
 
     console.log(sortedPosts);
 
-    //THANK YOU MICHAEL BROOKINS AND GUANG CHEN
+    //**** THANK YOU MICHAEL BROOKINS AND GUANG CHEN!!!!*****
     const artifactDir = path.resolve(__dirname, "Artifacts");
     if (!fs.existsSync(artifactDir)) {
         fs.mkdirSync(artifactDir);

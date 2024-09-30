@@ -1,7 +1,7 @@
 import { test, expect} from "@playwright/test";
 import { HomePage } from "../../pages/HomePage"; 
 
-
+/** Positive Test */
 test("At Least One Item on Home", async ({ page }) => {
   const home = new HomePage(page); //is there any way I can put this in a testEach?
   await home.goToURLandValidLogin();
@@ -12,6 +12,7 @@ test("At Least One Item on Home", async ({ page }) => {
   await expect(home.addToCartButton).toBeVisible();
 });
 
+/** Additional Test 3 */
 test("Logout", async ({ page }) => {
   const home = new HomePage(page);
   const loginToolkit = home.passOverTools();
