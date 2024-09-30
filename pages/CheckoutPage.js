@@ -1,4 +1,4 @@
-const { LoginTools } = require("./LoginTools"); //this was apparently the only way to import this without destroying stability of exports.HomePage. import ( x ) from "x" doesn't work here )-:
+const { LoginTools } = require("./LoginTools"); 
 
 const { HomePage } = require("./HomePage");
 
@@ -6,7 +6,7 @@ exports.CheckoutPage = class CheckoutPage {
   constructor(page) {
     this.page = page;
     this.LoginTools = new LoginTools(page);
-    this.cartLink = page.locator("[data-test='shopping-cart-link']"); //if no name attribute and only data-test, must make use .locator
+    this.cartLink = page.locator("[data-test='shopping-cart-link']"); 
     this.checkoutButton = page.getByRole("button", { name: "Checkout" });
     this.continueButton = page.getByRole("button", { name: "Continue" });
     this.cartBadge = page.locator("[data-test='shopping-cart-badge']");

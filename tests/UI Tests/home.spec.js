@@ -20,7 +20,7 @@ test("Logout", async ({ page }) => {
   await home.logout();
   await expect((await loginToolkit).loginButton).toBeVisible(); //awaitception
   await home.goToItemURL();
-  await expect(page.getByText("You can only access '/inventory.html' when you are logged in.")).toBeVisible(); //if i gotta check more than like 3 different error messages i might make a class for error messages too smh...........
+  await expect(page.getByText("You can only access '/inventory.html' when you are logged in.")).toBeVisible(); 
 });
 
 
