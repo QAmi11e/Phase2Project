@@ -1,6 +1,5 @@
 import { test, expect } from "@playwright/test";
 import { CheckoutPage } from "../../pages/CheckoutPage";
-import { HomePage } from "../../pages/HomePage"; 
 
 /** Additional Test 1 */
 test("Empty Cart Checkout", async ({ page }) => {
@@ -17,11 +16,9 @@ test("Badge on Cart", async ({ page }) => {
   const checkout = new CheckoutPage(page);
   await checkout.goToURLandValidLogin();
   await checkout.addItemToCart(page);
-  await expect(checkout.cartBadge).toBeVisible(); //redundant, no? or better to check it exists then its validity?
+  await expect(checkout.cartBadge).toBeVisible(); 
   await checkout.getBadgeNumber();
   await expect(checkout.cartBadgeNumber).toBe("1");
 });
 
-// test("Correct Item is in Cart", async ({page})=> {
 
-// });
